@@ -1,6 +1,7 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-corpus = ["Cats are friendly animals", "Dogs are loyal pets"]
-vectorizer = TfidfVectorizer()
-X = vectorizer.fit_transform(corpus)
-coherence_score = (X * X.T).A[0, 1]
-print("Coherence Score:", coherence_score)
+import nltk
+dialog = "How are you? I am fine, thank you."
+utterances = nltk.sent_tokenize(dialog)
+acts = {"question": "?", "statement": "."}
+for utterance in utterances:
+    act = "question" if utterance.endswith("?") else "statement"
+    print(f"'{utterance}' is a {act}")
